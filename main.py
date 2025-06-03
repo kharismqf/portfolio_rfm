@@ -147,15 +147,23 @@ def project():
             </table>
             """, unsafe_allow_html=True)
          st.write('## RFM Quartil')
-         image_path = "images/Temuan&Hasil.png"  # path relatif dari folder project
-         image = Image.open(image_path)
-         st.image(image, caption="RFM Quartil", use_container_width=True)
+        # Inisialisasi state toggle gambar
+         if "show_image" not in st.session_state:
+            st.session_state.show_image = False
+
+        # Tombol toggle untuk tampilkan / sembunyikan gambar
+         if st.button("Tampilkan Gambar RFM Quartil"):
+            st.session_state.show_image = not st.session_state.show_image
+
+        # Jika show_image True, tampilkan gambarnya
+         if st.session_state.show_image:
+            image_path = "images/Temuan&Hasil.png"  # ganti dengan path gambarmu yang benar
+            image = Image.open(image_path)
+            st.image(image, caption="RFM Quartil", use_container_width=True)
 
          st.write("## Analisis RFM Pelanggan")
-
          # Ubah format tanggal
          data['Order Date'] = pd.to_datetime(data['Order Date'])
-
          # Hitung nilai RFM
          rfm = data.groupby('Customer ID').agg({
             'Order Date': lambda x: (data['Order Date'].max() - x.max()).days,
