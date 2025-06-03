@@ -147,7 +147,7 @@ def project():
             </table>
             """, unsafe_allow_html=True)
          st.write('## RFM Quartil')
-         image_path = (r"C:\Users\User\Pictures\Screenshot\Temuan&Hasil.png")
+         image_path = "images/Temuan&Hasil.png"  # path relatif dari folder project
          image = Image.open(image_path)
          st.image(image, caption="RFM Quartil", use_container_width=True)
 
