@@ -14,7 +14,7 @@ def project():
     st.markdown("<h1 style='text-align: center;'>Analisis Segmentasi Pelanggan dengan RFM</h1>", unsafe_allow_html=True)
 
     # Load data
-    data_path = (r"C:\Users\User\Documents\Github\Streamlit\Streamlit\GS Final.csv")
+    data_path = ("GS Final.csv")
     try:
         data = pd.read_csv(data_path)
         st.success("Data berhasil dimuat!")
