@@ -146,20 +146,27 @@ def project():
                 </tbody>
             </table>
             """, unsafe_allow_html=True)
-         st.write('## RFM Quartil')
-        # Inisialisasi state toggle gambar
-         if "show_image" not in st.session_state:
-            st.session_state.show_image = False
+         # st.write('## RFM Quartil')
+         """
+            RFM Cutoff Berdasarkan Kuartil
 
-        # Tombol toggle untuk tampilkan / sembunyikan gambar
-         if st.button("Tampilkan Gambar RFM Quartil"):
-            st.session_state.show_image = not st.session_state.show_image
+            1. Skor Recency (Semakin kecil nilainya, semakin baru transaksi terakhir pelanggan)
+            - Skor 3 (Top 25%): Pelanggan yang melakukan transaksi terakhir dalam ≤ 124 hari terakhir.
+            - Skor 2 (Middle 50%): Pelanggan yang melakukan transaksi terakhir antara 124 – 127 hari yang lalu.
+            - Skor 1 (Bottom 25%): Pelanggan yang melakukan transaksi terakhir lebih dari 127 hari yang lalu.
 
-        # Jika show_image True, tampilkan gambarnya
-         if st.session_state.show_image:
-            image_path = "images/Temuan&Hasil.png"  # ganti dengan path gambarmu yang benar
-            image = Image.open(image_path)
-            st.image(image, caption="RFM Quartil", use_container_width=True)
+            2. Skor Frequency (Semakin tinggi nilainya, semakin sering pelanggan bertransaksi)
+            - Skor 1 (Bottom 25%): Pelanggan yang melakukan ≤ 12 transaksi.
+            - Skor 2 (Middle 50%): Pelanggan yang melakukan transaksi antara 12 – 52 transaksi.
+            - Skor 3 (Top 25%): Pelanggan yang melakukan > 52 transaksi.
+
+            3. Skor Monetary (Semakin tinggi nilainya, semakin besar nilai transaksi total pelanggan)
+            - Skor 1 (Bottom 25%): Pelanggan dengan total pengeluaran ≤ $1,674.81.
+            - Skor 2 (Middle 50%): Pelanggan dengan total pengeluaran antara $1,674.81 – $13,133.10.
+            - Skor 3 (Top 25%): Pelanggan dengan total pengeluaran > $13,133.10.
+            """
+
+
 
          st.write("## Analisis RFM Pelanggan")
          # Ubah format tanggal
